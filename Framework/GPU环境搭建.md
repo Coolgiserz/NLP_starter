@@ -103,7 +103,23 @@ CUDA是由NVIDIA所推出的一种集成技术，是该公司对于GPGPU的正�
 
    
 
-4. ……
+4. 安装多版本的cuda（可选）
+
+   再到nvidia官网下载一个与已安装cuda不同版本的cuda，如cuda10.0的runfile，照常安装。
+
+   不同的地方在于：一般这个时候已经安了nvidia驱动，所以当安装过程中命令行提示“Install NVIDIA Accelerated Graphics Driver for Linux-x86_64 xxx”时，可以选no；问你是否要为当前安装版本创建软链接时，视需求而定，如果你此时需要使用这个版本的cuda就创建，否则选no，当然后面也可以改。
+
+5. 在多个cuda版本之间进行切换
+
+   要切换版本，只需要删除之前创建的软链接，然后再新创建一个即可。如：
+
+   ```shell
+   rm -rf /usr/local/cuda#删除之前创建的软链接
+   sudo ln -s /usr/local/cuda-10.0/ /usr/local/cuda/
+   nvcc --version #查看当前 cuda 版本
+   ```
+
+6. ……
 
 #### CUDNN安装基本步骤
 
@@ -183,6 +199,8 @@ nvcc是
 ## 问题（慢慢补充）
 
 使用cuda9、cuda10、cuda11有什么区别？有什么坑吗？
+
+
 
 
 
