@@ -53,6 +53,7 @@
 ### 人工智能
 
 - Association for the Advancement of Artificial Intelligence（AAAI）
+- International Joint Conference on Artificial Intelligence（IJCAI）
 - ……
 
 ### 机器学习
@@ -88,7 +89,18 @@
 
 - ……
 
-  
+
+## 竞赛
+
+- biendata
+
+  https://www.biendata.xyz
+
+- AI研习社
+
+  https://www.yanxishe.com/?navVer=4
+
+- ……
 
 ## 参考资料
 
