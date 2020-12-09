@@ -32,11 +32,7 @@
    sudo chown -R USER_NAME anaconda3/
    ```
 
-   
-
 5. ……
-
-
 
 ### 基本使用
 
@@ -78,6 +74,57 @@ $ conda config --remove channels
 
 ##### 切换虚拟环境
 
+##### 备份虚拟环境
+
+备份conda
+
+```shell
+# 把环境中的包导出，方便在不同的平台和操作系统之间复现项目环境
+$ conda env export > environment_py36.yml
+```
+
+或者
+
+```shell
+# 复制环境
+$ conda create -n python35copy --clone python35
+```
+
+还可以通过conda-pack打包conda环境
+
+```shell
+# 1. 安装命令
+conda install -c conda-forge conda-pack
+# 2. 打包环境
+## Pack environment my_env into my_env.tar.gz
+conda pack -n my_env
+
+## Pack environment my_env into out_name.tar.gz
+conda pack -n my_env -o out_name.tar.gz
+
+## Pack environment located at an explicit path into my_env.tar.gz
+conda pack -p /explicit/path/to/my_env
+
+# 3. 重现环境
+# Unpack environment into directory `my_env`
+mkdir -p my_env
+tar -xzf my_env.tar.gz -C my_env
+# Use Python without activating or fixing the prefixes. Most Python
+# libraries will work fine, but things that require prefix cleanups
+# will fail.
+./my_env/bin/python
+# Activate the environment. This adds `my_env/bin` to your path
+source my_env/bin/activate
+# Run Python from in the environment
+(my_env) $ python
+# Cleanup prefixes from in the active environment.
+# Note that this command can also be run without activating the environment
+# as long as some version of Python is already installed on the machine.
+(my_env) $ conda-unpack
+```
+
+
+
 ## 技巧
 
 ### 局域网内电脑访问jupyter
@@ -88,16 +135,12 @@ $ conda config --remove channels
    jupyter notebook --generate-config
    ```
 
-   
-
 2. 修改配置
 
    ```
    c.ConnectionFileMixin.ip = '0.0.0.0'
    c.NotebookApp.ip = '0.0.0.0'
    ```
-
-   
 
 3. 开启防火墙的端口/关闭防火墙
 
@@ -109,8 +152,7 @@ $ conda config --remove channels
 
 可通过更换源避免该问题。
 
-
-
 ## 参考
 
 - Anaconda 镜像使用帮助：https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/
+- [Conda 环境迁移](https://zhuanlan.zhihu.com/p/87344422)
