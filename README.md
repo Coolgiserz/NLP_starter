@@ -17,11 +17,7 @@
 #### 自然语言处理
 
 - cs224N
-
-- speech natural language processing
-
-  https://web.stanford.edu/~jurafsky/slp3/
-
+- [speech natural language processing](https://web.stanford.edu/~jurafsky/slp3/)
 - ……
 
 ### 教材
@@ -42,11 +38,13 @@
 
 #### 机器学习理论
 
-- 钥匙书
-
-  https://github.com/datawhalechina/key-book
-
+- [钥匙书](https://github.com/datawhalechina/key-book)
 - ……
+
+#### 数据挖掘
+
+- [Data Mining: Concepts and Techniques](https://books.google.co.jp/books?hl=zh-CN&lr=&id=pQws07tdpjoC&oi=fnd&pg=PP1&ots=tADw3-ry22&sig=JpjZzC5hj4rI9KEyiCmMpZa0hFU#v=onepage&q&f=false)
+- [Data Mining for Scientific and Engineering Applications](https://link.springer.com/book/10.1007/978-1-4615-1733-7) 
 
 ## 值得关注的会议/期刊
 
@@ -92,24 +90,16 @@
 
 ## 竞赛
 
-- biendata
+- [biendata](https://www.biendata.xyz)
 
-  https://www.biendata.xyz
-
-- AI研习社
-
-  https://www.yanxishe.com/?navVer=4
+- [AI研习社](https://www.yanxishe.com/?navVer=4)
 
 - ……
 
 ## 参考资料
 
-- 如何从零开始学习凸优化？
+- [如何从零开始学习凸优化？](https://www.zhihu.com/question/68418633)
 
-  https://www.zhihu.com/question/68418633
-  
-- 刘知远：NLP研究入门之道（二）走近NLP学术界
+- [刘知远：NLP研究入门之道（二）走近NLP学术界](https://cloud.tencent.com/developer/article/1421004)
 
-  https://cloud.tencent.com/developer/article/1421004
-  
 - ……
