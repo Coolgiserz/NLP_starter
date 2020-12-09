@@ -42,7 +42,46 @@ CUDA是由NVIDIA所推出的一种集成技术，是该公司对于GPGPU的正�
    $ ubuntu-drivers devices
    ```
 
-2. 下载并安装相应版本的显卡驱动
+2. 屏蔽开源驱动nouveau
+
+   ```shell
+sudo vim /etc/modprobe.d/blacklist.conf
+   ```
+   
+   添加以下内容后保存
+
+   ```
+blacklist nouveau 
+   ```
+
+3. （可选）如果有旧驱动，需要先卸载
+
+   ```
+   sudo apt-get --purge remove nvidia-*
+   sudo apt-get --purge remove xserver-xorg-video-nouveau
+   ```
+
+4. 重启电脑
+
+5. 关闭X-server服务
+
+   ```shell
+   sudo service lightdm stop
+   ```
+
+   如果提示unit lightdm.service not loaded则先安装lightdm
+
+   ```shell
+   sudo apt install lightdm
+   ```
+
+   安装完毕后执行：
+
+   ```shell
+   sudo service lightdm stop
+   ```
+
+6. 下载并安装相应版本的显卡驱动
 
    （选择一：自动安装推荐版本）
 
@@ -50,12 +89,10 @@ CUDA是由NVIDIA所推出的一种集成技术，是该公司对于GPGPU的正�
    sudo ubuntu-drivers autoinstall
    ```
 
-   
-
    （选择二：安装特定版本）
 
    ```
-   sudo apt install nvidia-450
+   sudo apt install nvidia-driver-450
    ```
 
    这里可能会遇到找不到源的情况，需要添加软件仓库：
@@ -64,13 +101,23 @@ CUDA是由NVIDIA所推出的一种集成技术，是该公司对于GPGPU的正�
    sudo add-apt-repository ppa:graphics-drivers/ppa
    ```
 
-   
-
    （选择三：手动到官网下载驱动并安装）
 
    暂略
 
-3. ……
+7. 重启X-server服务
+
+   ```shell
+   $ sudo service lightdm start
+   ```
+
+8. 重启电脑
+
+   ```shell
+   sudo reboot
+   ```
+
+9. ……
 
 #### CUDA安装基本步骤
 
@@ -92,13 +139,22 @@ CUDA是由NVIDIA所推出的一种集成技术，是该公司对于GPGPU的正�
 
    默认安装在/usr/local/cuda-xxxx文件夹中。
 
+   ```shell
+   sudo sh cuda_10.2.89_440.33.01_linux.run --toolkit --silent --override
+   ```
+
+   
+
 3. 配置环境变量
 
    ```shell
-   vim ~/.bashrc#进入配置文件；
+   $ vim ~/.bashrc#进入配置文件；
    # 添加以下两行：
    export PATH=/usr/local/cuda/bin:$PATH
    export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+   
+   # 使环境变量生效
+   $ source ~/.bashrc
    ```
 
    
@@ -128,6 +184,12 @@ CUDA是由NVIDIA所推出的一种集成技术，是该公司对于GPGPU的正�
 2. 解压下载的文件，进行如下操作：
 
    ```shell
+   $ tar -zxvf cudnn-10.2-linux-x64-v8.0.1.13.tgz
+   ```
+
+   
+
+   ```shell
    $ sudo cp cuda/include/cudnn.h /usr/local/cuda/include/
    $ sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64/
    $ sudo chmod a+r /usr/local/cuda/include/cudnn.h
@@ -150,12 +212,43 @@ CUDA是由NVIDIA所推出的一种集成技术，是该公司对于GPGPU的正�
 
 ### 一些问题
 
+#### 如何卸载Nvidia驱动？
+
+先停止lightdm
+
+```shell
+$ sudo service lightdm stop
+```
+
+或
+
+```shell
+$ sudo /etc/init.d/lightdm stop
+```
+
+然后执行卸载命令：
+
+```shell
+sudo /usr/bin/nvidia-uninstall
+```
+
+或
+
+```shell
+sudo apt-get purge nvidia-*
+sudo apt-get --purge remove xserver-xorg-video-nouveau
+```
+
+
+
 #### 使用sudo ubuntu-drivers autoinstall安装成功后执行nvidia-smi命令，报错“NVIDIA-SMI has failed because it couldn't communicate with the NVIDIA driver”
 
 ```shell
 $ sudo apt-get install dkms
 $ sudo dkms build -m nvidia -v 450.80.2   
+# 执行成功后：Module nvidia/455.45.01 already built for kernel 5.4.0-56-generic/4
 $ sudo dkms install -m nvidia -v 450.80.2   
+# 执行成功后：Module nvidia/455.45.01 already installed on kernel 5.4.0-56-generic/x86_64
 ```
 
 注意，上面的450.80.2取决于/usr/src/目录下的nvidia-xxxx目录的版本号。如果/usr/src/下关于nvidia的文件夹名为nvidia-src-xxxx，先将其重命名为nvidia-xxx再执行以上语句。
@@ -206,9 +299,11 @@ nvcc是
 
 ### 参考资料
 
-- Ubuntu 18.04 安装 NVIDIA 显卡驱动：https://zhuanlan.zhihu.com/p/59618999
-- ubuntu环境下，系统无法与NVIDIA通信的解决方法：https://wangpei.ink/2019/01/19/NVIDIA-SMI-has-failed-because-it-couldn%27t-communicate-with-the-NVIDIA-driver的解决方法/
+- [知乎:Ubuntu 18.04 安装 NVIDIA 显卡驱动](https://zhuanlan.zhihu.com/p/59618999)
+- [CSDN:Ubuntu 18.04安装NVIDIA显卡驱动](https://blog.csdn.net/chentianting/article/details/85089403)
+
+- [ubuntu环境下，系统无法与NVIDIA通信的解决方法](https://wangpei.ink/2019/01/19/NVIDIA-SMI-has-failed-because-it-couldn%27t-communicate-with-the-NVIDIA-driver的解决方法/)
 - [NVIDIA CUDA Installation Guide for Linux](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#abstract)
-- 深度学习GPU环境搭建：https://xiaoyufenfei.github.io/2019/08/26/shen-du-xue-xi-gpu-huan-jing-da-jian-shang-pian/
-- 显卡，显卡驱动,nvcc, cuda driver,cudatoolkit,cudnn到底是什么？：https://www.cnblogs.com/marsggbo/p/11838823.html
+- [深度学习GPU环境搭建](https://xiaoyufenfei.github.io/2019/08/26/shen-du-xue-xi-gpu-huan-jing-da-jian-shang-pian/)
+- [显卡，显卡驱动,nvcc, cuda driver,cudatoolkit,cudnn到底是什么？](https://www.cnblogs.com/marsggbo/p/11838823.html)
 
