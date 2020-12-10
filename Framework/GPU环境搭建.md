@@ -45,14 +45,28 @@ CUDA是由NVIDIA所推出的一种集成技术，是该公司对于GPGPU的正�
 2. 屏蔽开源驱动nouveau
 
    ```shell
-sudo vim /etc/modprobe.d/blacklist.conf
+   sudo vim /etc/modprobe.d/blacklist.conf
    ```
-   
+
    添加以下内容后保存
 
    ```
-blacklist nouveau 
+   blacklist nouveau 
    ```
+
+   更新使其生效
+
+   ```shell
+   $ sudo update-initramfs -u
+   ```
+
+   检查是否禁用成功
+
+   ```shell
+   $ lspci | grep nouveau
+   ```
+
+   
 
 3. （可选）如果有旧驱动，需要先卸载
 
@@ -93,6 +107,9 @@ blacklist nouveau
 
    ```
    sudo apt install nvidia-driver-450
+   sudo apt install nvidia-driver-390
+   sudo apt install xserver-xorg-core
+   sudo apt install xserver-xorg-video-nouveau
    ```
 
    这里可能会遇到找不到源的情况，需要添加软件仓库：
@@ -101,7 +118,7 @@ blacklist nouveau
    sudo add-apt-repository ppa:graphics-drivers/ppa
    ```
 
-   （选择三：手动到官网下载驱动并安装）
+   （选择三：手动到[官网](https://www.nvidia.cn/Download/index.aspx?lang=cn)下载驱动并安装）
 
    暂略
 
@@ -114,10 +131,24 @@ blacklist nouveau
 8. 重启电脑
 
    ```shell
-   sudo reboot
+   $ sudo reboot
    ```
 
-9. ……
+9. (可选) 配置xorg
+
+   Nvidia提供了一个自动配置工具帮助创建xorg的配置文件(`xorg.conf`)
+
+   可运行如下命令实现自动配置：
+
+   ```shell
+   $ nvidia-xconfig
+   ```
+
+   当Xorg的配置文件`xorg.conf`不存在时，这条命令会自动检测您的硬件，并创建文件`/etc/X11/xorg.conf`。假如配置文件已经存在的话，它会进行一些编辑，以方便在Xorg运行时能成功载入英伟达的专有驱动。
+
+   ……
+
+10. ……
 
 #### CUDA安装基本步骤
 
@@ -187,16 +218,12 @@ blacklist nouveau
    $ tar -zxvf cudnn-10.2-linux-x64-v8.0.1.13.tgz
    ```
 
-   
-
    ```shell
    $ sudo cp cuda/include/cudnn.h /usr/local/cuda/include/
    $ sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64/
    $ sudo chmod a+r /usr/local/cuda/include/cudnn.h
    $ sudo chmod a+r /usr/local/cuda/lib64/libcudnn*
    ```
-
-   
 
 3. 设置软连接
 
@@ -205,8 +232,6 @@ blacklist nouveau
    $ sudo ln -sf libcudnn.so.7 libcudnn.so
    $ sudo ldconfig -v
    ```
-
-   
 
 4. ……
 
@@ -238,8 +263,6 @@ sudo /usr/bin/nvidia-uninstall
 sudo apt-get purge nvidia-*
 sudo apt-get --purge remove xserver-xorg-video-nouveau
 ```
-
-
 
 #### 使用sudo ubuntu-drivers autoinstall安装成功后执行nvidia-smi命令，报错“NVIDIA-SMI has failed because it couldn't communicate with the NVIDIA driver”
 
@@ -275,18 +298,13 @@ nvcc是
   $ nvcc --version
   ```
 
-  
-
 - 查看cudnn版本
 
   ```shell
   $ cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
   $ cat cuda/include/cudnn_version.h |grep ^# 
-  
   ```
-
   
-
 - ……
 
 ## 问题（慢慢补充）
@@ -306,4 +324,5 @@ nvcc是
 - [NVIDIA CUDA Installation Guide for Linux](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#abstract)
 - [深度学习GPU环境搭建](https://xiaoyufenfei.github.io/2019/08/26/shen-du-xue-xi-gpu-huan-jing-da-jian-shang-pian/)
 - [显卡，显卡驱动,nvcc, cuda driver,cudatoolkit,cudnn到底是什么？](https://www.cnblogs.com/marsggbo/p/11838823.html)
+- [archlinux: NVIDIA](https://wiki.archlinux.org/index.php/NVIDIA_(简体中文))
 
