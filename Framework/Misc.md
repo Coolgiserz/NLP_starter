@@ -1,6 +1,6 @@
 # Misc
 
-或许有助于提升效率的工具：
+或许有助于提升效率的工具、技能：
 
 ## 0x01 IDE
 
@@ -32,7 +32,7 @@ $ sudo apt install code
 
 #### 远程桌面
 
-- 向日葵
+- [向日葵](https://sunlogin.oray.com/download/)
 - Teamviewer
 - ……
 
@@ -154,7 +154,7 @@ $ scp local_file remote_ip:remote_file
    mv vcore/* ~/.config/qv2ray/vcore/
    ```
 
-2. 注册账号并
+2. 注册账号并购买套餐
 
    http://clyun.club/auth/register
 
@@ -166,11 +166,13 @@ $ scp local_file remote_ip:remote_file
 
 - ……
 
-### 版本控制系统：Git
+## 0x04 版本控制系统
 
-### 数据下载工具
+Git
 
-####kaggle-api
+## 0x05 数据下载工具
+
+#### kaggle-api
 
 1. 安装kaggle工具
 
@@ -237,9 +239,44 @@ $ pip install kaggle
    oil.csv.7z                  4KB  2018-06-20 06:10:54
    ```
 
-   
-
    详情参见[文档](https://github.com/Kaggle/kaggle-api)
+
+   【问题：下载某些竞赛数据集时，如
+
+   ```shell
+   kaggle competitions download -c nyc-taxi-trip-duration
+   ```
+
+   可能会返回403-forbiden，原因是没有接受竞赛的规则，需要在竞赛主页接受。
+
+   】
+
+
+
+####  osm2gmns
+
+[一款开源软件让你从此不再为路网数据而烦恼](https://mp.weixin.qq.com/s?__biz=MzUzNjk4ODUxNA==&mid=2247487332&idx=1&sn=e1cc3f6353b055759a8d9f641b76f5c5&chksm=faec9169cd9b187fddff4f0f6013aead9144d47cc7d430a8722bbce0d4f6c06c2dea0a5e50d0&mpshare=1&scene=23&srcid=1209ioRkKjlqA9rBf43YXWOQ&sharer_sharetime=1607568353709&sharer_shareid=2859faa865fd29f3066a4c3ae33d2f89%23rd)
+
+https://osm2gmns.readthedocs.io
+
+安装方法：
+
+```shell
+pip install osm2gmns
+```
+
+## 0x06 系统管理
+
+Linux环境变量配置: 
+
+```shell
+$ vim ~/.bashrc
+# 添加环境变量
+export PATH=/xxx/xxx:$PATH
+$ source ~/.bashrc
+```
+
+
 
 ## 参考
 
