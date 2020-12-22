@@ -4,13 +4,15 @@
 
 ### 课程
 
+#### 人工智能
+
+- [Artificial Intelligence: A Modern Approach](http://aima.cs.berkeley.edu)
+
 #### 机器学习
 
 - 台大李宏毅机器学习课程：
 
-  中文课程！台大李宏毅机器学习公开课2019版上线：https://zhuanlan.zhihu.com/p/59655414
-
-  http://speech.ee.ntu.edu.tw/~tlkagk/courses_ML19.html
+  [中文课程！台大李宏毅机器学习公开课2019版上线](https://zhuanlan.zhihu.com/p/59655414) [[课程地址]](http://speech.ee.ntu.edu.tw/~tlkagk/courses_ML19.html)
 
 - ……
 
@@ -24,9 +26,7 @@
 
 #### 优化理论
 
-- Convex Optimization: Algorithms and Complexity
-
-  https://arxiv.org/pdf/1405.4980.pdf
+- [Convex Optimization: Algorithms and Complexity](https://arxiv.org/pdf/1405.4980.pdf)
 
   基础优化理论
 
@@ -60,6 +60,14 @@
 
   三大主会之一。
 
+- [International Conference on Learning Representations(ICLR)](https://iclr.cc)
+
+  [ICLR OpenReview](https://openreview.net/group?id=ICLR.cc/2020/Conference)
+
+- [Uncertainty in Artificial Intelligence (UAI)](https://www.auai.org/uai2020/)
+
+- [Artificial Intelligence and Statistics (AISTAT)](http://aistats.org/aistats2021/)
+
 - ……
 
 ### 自然语言处理
@@ -70,7 +78,17 @@
 
 - Conference on Empirical Methods in Natural Language Processing（EMNLP）
 
+- NAACL
+
+- COLIG
+
 - ……
+
+### 数据挖掘
+
+- KDD
+- WSDM
+- SDM
 
 ### 计算机视觉
 
@@ -82,9 +100,9 @@
 ## 值得关注的公众号
 
 - 学术头条
-
 - AI Time
-
+- 机器之心
+- 新智元
 - ……
 
 
