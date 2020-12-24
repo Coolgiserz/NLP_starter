@@ -2,6 +2,8 @@
 
 ## 学习资料
 
+关于人工智能、机器学习、自然语言处理等领域的学习资料。
+
 ### 课程
 
 #### 人工智能
@@ -14,13 +16,19 @@
 
   [中文课程！台大李宏毅机器学习公开课2019版上线](https://zhuanlan.zhihu.com/p/59655414) [[课程地址]](http://speech.ee.ntu.edu.tw/~tlkagk/courses_ML19.html)
 
+- [CS224W: Machine Learning with Graphs](http://web.stanford.edu/class/cs224w/)
+
 - ……
 
 #### 自然语言处理
 
-- cs224N
+- [CS224n: Natural Language Processing with Deep Learning](http://web.stanford.edu/class/cs224n/)
 - [speech natural language processing](https://web.stanford.edu/~jurafsky/slp3/)
 - ……
+
+#### 计算机视觉
+
+- [CS231n: Convolutional Neural Networks for Visual Recognition](http://cs231n.stanford.edu)
 
 ### 教材
 
@@ -30,7 +38,7 @@
 
   基础优化理论
 
-- Optimization Methods for Large-Scale Machine Learning
+- [Optimization Methods for Large-Scale Machine Learning](https://arxiv.org/abs/1606.04838)
 
   相对前沿的优化理论
   
@@ -78,7 +86,7 @@
 
 - Conference on Empirical Methods in Natural Language Processing（EMNLP）
 
-- NAACL
+- [Annual Conference of the North American Chapter of the Association for Computational Linguistics（NAACL）](https://2021.naacl.org)
 
 - COLIG
 
@@ -97,21 +105,25 @@
 - ECCV
 - ……
 
+## 值得关注的组织
+
+- [智源社区](https://hub.baai.ac.cn)
+- 集智俱乐部
+
 ## 值得关注的公众号
 
 - 学术头条
 - AI Time
-- 机器之心
+- [机器之心](https://www.jiqizhixin.com/)
 - 新智元
 - ……
 
 
 ## 竞赛
 
+- Kaggle
 - [biendata](https://www.biendata.xyz)
-
 - [AI研习社](https://www.yanxishe.com/?navVer=4)
-
 - ……
 
 ## 参考资料
