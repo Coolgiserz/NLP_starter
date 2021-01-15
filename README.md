@@ -46,6 +46,8 @@
 
 #### 机器学习理论
 
+- 统计学习方法
+- [模式识别与机器学习](https://mp.weixin.qq.com/s?__biz=MzAxNTAwNjQzNw==&mid=2448608789&idx=2&sn=464793e01a519fa1f8775efa5f98ae5b&chksm=8f8cc19fb8fb4889d8b0d07de7542eb339db37416d6948998420d7ec7c2268fd470f0a58376b&mpshare=1&scene=1&srcid=011252huOY0qdgkBk0qBAp7R&sharer_sharetime=1610622024138&sharer_shareid=a29e67d573c277c0602beca884af1c7e#rd)
 - [钥匙书](https://github.com/datawhalechina/key-book)
 - ……
 
@@ -53,6 +55,10 @@
 
 - [Data Mining: Concepts and Techniques](https://books.google.co.jp/books?hl=zh-CN&lr=&id=pQws07tdpjoC&oi=fnd&pg=PP1&ots=tADw3-ry22&sig=JpjZzC5hj4rI9KEyiCmMpZa0hFU#v=onepage&q&f=false)
 - [Data Mining for Scientific and Engineering Applications](https://link.springer.com/book/10.1007/978-1-4615-1733-7) 
+
+#### 自然语言处理
+
+- 统计自然语言处理
 
 ## 值得关注的会议/期刊
 
@@ -112,11 +118,17 @@
 
 ## 值得关注的公众号
 
+### 机构
+
 - 学术头条
 - AI Time
 - [机器之心](https://www.jiqizhixin.com/)
 - 新智元
 - ……
+
+### 个人
+
+- 阿泽的学习笔记
 
 
 ## 竞赛
