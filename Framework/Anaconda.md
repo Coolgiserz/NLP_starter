@@ -70,6 +70,10 @@ $ conda config --remove channels
 
 ##### 创建虚拟环境
 
+```shell
+$ conda create -n python36 python=3.6
+```
+
 ##### 删除虚拟环境
 
 ##### 切换虚拟环境
@@ -123,11 +127,47 @@ source my_env/bin/activate
 (my_env) $ conda-unpack
 ```
 
+### 环境管理
+
+conda安装环境过程中可能会留下很多缓存、下载包、锁定文件，可以通过```conda clean```命令净化conda环境.
+
+查看帮助：
+
+```
+conda clean -h
+```
+
+删除tar包：
+
+```
+conda clean --tarballs
+```
+
+删除从不使用的包：
+
+```
+conda clean --packages
+```
+
+删除索引缓存、锁文件、不用的包、tar包：
+
+```
+conda clean -a 
+```
+
 
 
 ## 技巧
 
-### 局域网内电脑访问jupyter
+#### 在ipython和jupyter中使用虚拟环境
+
+需要使用nb_conda关联环境，安装方法如下：
+
+```
+conda install nb_conda
+```
+
+#### 局域网内电脑访问Jupyter
 
 1. 生成配置文件
 
@@ -140,11 +180,53 @@ source my_env/bin/activate
    ```
    c.ConnectionFileMixin.ip = '0.0.0.0'
    c.NotebookApp.ip = '0.0.0.0'
+   c.NotebookApp.allow_remote_access = True
+   c.NotebookApp.port = 10089
    ```
 
-3. 开启防火墙的端口/关闭防火墙
+3. 开启防火墙的端口/关闭防火墙(Ubuntu)
 
-4. 正常开启jupyter
+   ```shell
+   sudo ufw allow 10089
+   sudo ufw reload
+   sudo ufw status
+   ```
+
+   
+
+4. (可选) 设置密码
+
+   ```shell
+   jupyter notebook passwordjupyter
+   ```
+
+   
+
+   ```shell
+   python@master2 ~]$ ipython
+   Python 3.7.1 (default, Dec 14 2018, 19:28:38) 
+   Type 'copyright', 'credits' or 'license' for more information
+   IPython 7.2.0 -- An enhanced Interactive Python. Type '?' for help.
+   
+   In [1]: from IPython.lib import passwd                                                                                                                                 
+   
+   In [2]: passwd()                                                                                                                                                       
+   Enter password: 
+   Verify password: 
+   Out[2]: 'sha1:44b9b4ac9989:b819a8dca76aa86c2e1676ec86c8f59fb4e51802'
+   ```
+
+   
+
+5. 正常开启jupyter
+
+   或: 
+
+   ```shell
+   $ jupyter notebook --ip=0.0.0.0
+   ```
+
+   
 
 ## FAQ
 
